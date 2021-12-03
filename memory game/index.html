@@ -17,16 +17,17 @@
       <div class="clear"></div>
     </header>
     <main>
-      <div id="tabs">
-        <ul>
-          <li><a href="#tabs-1">Play Game</a></li>
-          <li><a href="#tabs-2">View Rules</a></li>
-          <li><a href="#tabs-3">Settings</a></li>
-        </ul>
-        <div id="tabs-1">
+      <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'tabs-1')">Play Game</button>
+        <button class="tablinks" onclick="openTab(event, 'tabs-2')">View Rules</button>
+        <button class="tablinks" onclick="openTab(event, 'tabs-3')">Settings</button>
+      </div>
+      
+        
+        <div id="tabs-1" class="tabcontent">
           <div id="cards"></div>
         </div>
-        <div id="tabs-2">
+        <div id="tabs-2" class="tabcontent">
           <fieldset>
             <legend>How to play the Memory game</legend>
             <ul>
@@ -45,7 +46,7 @@
             </ul>
           </fieldset>
         </div>
-        <div id="tabs-3">
+        <div id="tabs-3" class="tabcontent">
           <label for="player_name">Player name:</label>
           <input type="text" id="player_name" /><br />
 
@@ -56,12 +57,27 @@
             <option>32</option>
             <option>24</option>
             <option>16</option>
-            <option>8</option></select
-          ><br />
+            <option>8</option></select>
+          <br/>
 
           <input type="button" id="save_settings" value="Save Settings" />
         </div>
-      </div>
+     
     </main>
+    <script>
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      </script>
   </body>
 </html>
